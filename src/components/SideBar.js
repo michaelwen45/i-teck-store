@@ -43,8 +43,8 @@ const SideWrapper = styled.nav`
   border-right: 4px solid var(--primaryColor);
   transition: var(--mainTransition);
   transform: ${(props) =>
-      props.sidebarToggle ? "translatex(0);" : "translatex(-100%);"}
-    ul {
+    props.sidebarToggle ? "translatex(0);" : "translatex(-100%);"};
+  ul {
     list-style-type: none;
     padding: 0 !important;
   }

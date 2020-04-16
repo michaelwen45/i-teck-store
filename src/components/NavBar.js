@@ -3,12 +3,17 @@ import styled from "styled-components";
 import logo from "../images/logo.svg";
 import { FaBars, FaCartPlus } from "react-icons/fa";
 import { connect } from "react-redux";
-import { handleSideBarToggleAction } from "../redux/actions";
+import {
+  handleSideBarToggleAction,
+  handleCartToggleAction,
+} from "../redux/actions";
 class NavBar extends React.Component {
   handleSidebarClick = () => {
     this.props.handleSideBarToggleAction();
   };
-  handleCartClick = () => {};
+  handleCartClick = () => {
+    this.props.handleCartToggleAction();
+  };
   render() {
     const { itemCount } = this.props;
     return (
@@ -66,4 +71,7 @@ const mapStateToProps = (state) => {
     itemCount: state.products.itemCount,
   };
 };
-export default connect(mapStateToProps, { handleSideBarToggleAction })(NavBar);
+export default connect(mapStateToProps, {
+  handleSideBarToggleAction,
+  handleCartToggleAction,
+})(NavBar);

@@ -10,7 +10,9 @@ export default (state = INITIAL_STATE, action) => {
     case "HANDLE_SIDE_BAR_TOGGLE_ACTION":
       return { ...state, sidebarToggle: !state.sidebarToggle };
     case "SIDE_BAR_TOGGLE_ACTION":
-      return { ...state, sidebarToggle: false };
+      return { ...state, sidebarToggle: false, cartToggle: false };
+    case "HANDLE_CART_TOGGLE_ACTION":
+      return { ...state, cartToggle: !state.cartToggle };
     default:
       return state;
   }
