@@ -21,3 +21,16 @@ export const setProducts = () => {
     type: "SET_PRODUCTS",
   };
 };
+
+export const handleChangeAction = (textValue) => {
+  return {
+    type: "HANDLE_CHANGE_ACTION",
+    payload: textValue,
+  };
+};
+
+export const productChange = () => {
+  return {
+    type: "PRODUCT_CHANGE",
+  };
+};

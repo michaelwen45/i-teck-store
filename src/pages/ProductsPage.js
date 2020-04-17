@@ -1,45 +1,66 @@
 import React from "react";
+import styled from "styled-components";
+import Hero from "../components/Hero";
+import productsBcg from "../images/productsBcg.jpeg";
+
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { FaSearch, FaCartPlus } from "react-icons/fa";
+import Title from "../components/Title";
+import FilterProducts from "./FilterProducts";
 
 const ProductsPage = ({ filteredProducts }) => {
   if (filteredProducts) {
     return (
-      <section className="py-5">
-        <div className="container">
-          <div className="row my-5">
-            {filteredProducts.map((product) => {
-              return (
-                <ProductsWrapper
-                  key={product.id}
-                  className="col-10 mx-auto col-sm-8 col-md-6 col-lg-4 my-3"
-                >
-                  <div className="card">
-                    <img
-                      src={product.image}
-                      alt="product"
-                      className="card-img-top p-5"
-                      style={{ height: "320px" }}
-                    />
-                    <div className="product-icons">
-                      <Link to={`/product/${product.id}`}>
-                        <FaSearch className="icon" />
-                      </Link>
-                      <FaCartPlus className="icon" />
-                    </div>
-                    <div className="card-body d-flex justify-content-between">
-                      <p className="mb-0">{product.title}</p>
-                      <p className="mb-0 text-main">${product.price}</p>
-                    </div>
-                  </div>
-                </ProductsWrapper>
-              );
-            })}
+      <React.Fragment>
+        <Hero img={productsBcg} />
+        <FilterProducts />
+        <section className="py-5">
+          <div className="container">
+            <Title center title="our products" />
+            <div className="row my-5">
+              {filteredProducts.length > 0 ? (
+                <React.Fragment>
+                  {filteredProducts.map((product) => {
+                    return (
+                      <ProductsWrapper
+                        key={product.id}
+                        className="col-10 mx-auto col-sm-8 col-md-6 col-lg-4 my-3"
+                      >
+                        <div className="card">
+                          <img
+                            src={product.image}
+                            alt="product"
+                            className="card-img-top p-5"
+                            style={{ height: "320px" }}
+                          />
+                          <div className="product-icons">
+                            <Link to={`/product/${product.id}`}>
+                              <FaSearch className="icon" />
+                            </Link>
+                            <FaCartPlus
+                              className="icon"
+                              onClick={() => console.log(product)}
+                            />
+                          </div>
+                          <div className="card-body d-flex justify-content-between">
+                            <p className="mb-0">{product.title}</p>
+                            <p className="mb-0 text-main">${product.price}</p>
+                          </div>
+                        </div>
+                      </ProductsWrapper>
+                    );
+                  })}
+                </React.Fragment>
+              ) : (
+                <h2 style={{ textTransform: "capitalize" }}>
+                  unfortunately No items matched your search parameters
+                </h2>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </React.Fragment>
     );
   } else {
     return null;
