@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 import { FaSearch, FaCartPlus } from "react-icons/fa";
 import Title from "../components/Title";
 import FilterProducts from "./FilterProducts";
+import { addCartItem, cartItemCost } from "../redux/actions";
 
-const ProductsPage = ({ filteredProducts }) => {
+const ProductsPage = ({ filteredProducts, addCartItem, cartItemCost }) => {
   if (filteredProducts) {
     return (
       <React.Fragment>
@@ -40,7 +41,15 @@ const ProductsPage = ({ filteredProducts }) => {
                             </Link>
                             <FaCartPlus
                               className="icon"
-                              onClick={() => console.log(product)}
+                              onClick={() => {
+                                addCartItem({
+                                  id: product.id,
+                                  image: product.image,
+                                  title: product.title,
+                                  price: product.price,
+                                });
+                                cartItemCost();
+                              }}
                             />
                           </div>
                           <div className="card-body d-flex justify-content-between">
@@ -120,4 +129,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ProductsPage);
+export default connect(mapStateToProps, { addCartItem, cartItemCost })(
+  ProductsPage
+);

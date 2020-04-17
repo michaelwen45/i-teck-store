@@ -34,3 +34,14 @@ export const productChange = () => {
     type: "PRODUCT_CHANGE",
   };
 };
+export const addCartItem = (item) => {
+  return {
+    type: "ADD_CART_ITEM",
+    payload: item,
+  };
+};
+export const cartItemCost = () => {
+  return {
+    type: "CART_ITEM_COST",
+  };
+};

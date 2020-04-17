@@ -1,4 +1,5 @@
 import { items } from "../productData";
+import { checkCartItems } from "../utils/productUtils";
 
 const INITIAL_STATE = {
   sidebarToggle: false,
@@ -85,6 +86,23 @@ export default (state = INITIAL_STATE, action) => {
         );
       }
       return { ...state, filteredProducts: searchedProducts };
+    case "ADD_CART_ITEM":
+      return { ...state, cart: checkCartItems(state.cart, action.payload) };
+    case "CART_ITEM_COST":
+      const itemCostArr = state.cart.map((item) => {
+        return item.price * item.quantity;
+      });
+      const totalPrice = itemCostArr.reduce((acc, cur) => {
+        return acc + cur;
+      }, 0);
+      const itemCountArr = state.cart.map((item) => {
+        return item.quantity;
+      });
+      const itemCount = itemCountArr.reduce((acc, cur) => {
+        return acc + cur;
+      }, 0);
+      return { ...state, cartSubTotal: totalPrice, itemCount };
+
     default:
       return state;
   }

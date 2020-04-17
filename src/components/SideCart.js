@@ -3,10 +3,30 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 export class SideCart extends Component {
+  renderSideCartItems = () => {
+    const { cart } = this.props;
+    return cart.map((item) => {
+      return (
+        <div key={item.id}>
+          <img src={item.image} alt="item" />
+          <h3>{item.title}</h3>
+          <h2>
+            <span style={{ fontWeight: "bolder" }}>Quantity : </span>
+            {item.quantity}
+          </h2>
+        </div>
+      );
+    });
+  };
   render() {
-    const { cartToggle } = this.props;
+    const { cartToggle, cartSubTotal } = this.props;
 
-    return <CartWrapper cartToggle={cartToggle}>Cart items</CartWrapper>;
+    return (
+      <CartWrapper cartToggle={cartToggle}>
+        {this.renderSideCartItems()}
+        <h2>Cart Subtotal : ${cartSubTotal}</h2>
+      </CartWrapper>
+    );
   }
 }
 
@@ -30,6 +50,8 @@ const CartWrapper = styled.div`
 const mapStateToProps = (state) => {
   return {
     cartToggle: state.products.cartToggle,
+    cart: state.products.cart,
+    cartSubTotal: state.products.cartSubTotal,
   };
 };
 export default connect(mapStateToProps)(SideCart);
