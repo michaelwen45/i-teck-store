@@ -2,6 +2,8 @@ import React from "react";
 import Hero from "../components/Hero";
 import { Link } from "react-router-dom";
 import mainBcg from "../images/mainBcg.jpeg";
+import Services from "../components/Services";
+import Featured from "../components/Featured";
 const HomePage = () => {
   return (
     <div>
@@ -10,6 +12,8 @@ const HomePage = () => {
           our products
         </Link>
       </Hero>
+      <Services />
+      <Featured />
     </div>
   );
 };
