@@ -15,3 +15,9 @@ export const sideBarToggleAction = () => {
     type: "SIDE_BAR_TOGGLE_ACTION",
   };
 };
+
+export const setProducts = () => {
+  return {
+    type: "SET_PRODUCTS",
+  };
+};

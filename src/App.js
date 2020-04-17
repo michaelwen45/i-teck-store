@@ -14,29 +14,36 @@ import SideCart from "./components/SideCart";
 import Footer from "./components/Footer";
 
 import { Route, Switch } from "react-router-dom";
+import { setProducts } from "./redux/actions";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <React.Fragment>
-      <NavBar />
-      <SideBar />
-      <SideCart />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/contact" component={ContactPage} />
-        <Route
-          exact
-          path="/product/:productId"
-          component={SingleProductsPage}
-        />
-        <Route exact path="/about" component={AboutPage} />
-        <Route exact path="/products" component={ProductsPage} />
-        <Route exact path="/cart" component={CartPage} />
-        <Route component={DefaultPage} />
-      </Switch>
-      <Footer />
-    </React.Fragment>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    this.props.setProducts();
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <NavBar />
+        <SideBar />
+        <SideCart />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/contact" component={ContactPage} />
+          <Route
+            exact
+            path="/product/:productId"
+            component={SingleProductsPage}
+          />
+          <Route exact path="/about" component={AboutPage} />
+          <Route exact path="/products" component={ProductsPage} />
+          <Route exact path="/cart" component={CartPage} />
+          <Route component={DefaultPage} />
+        </Switch>
+        <Footer />
+      </React.Fragment>
+    );
+  }
 }
 
-export default App;
+export default connect(null, { setProducts })(App);

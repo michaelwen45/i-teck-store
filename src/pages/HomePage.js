@@ -7,7 +7,7 @@ import Featured from "../components/Featured";
 const HomePage = () => {
   return (
     <div>
-      <Hero title="awesome gadgets" max img={mainBcg}>
+      <Hero title="awesome gadgets" max="true" img={mainBcg}>
         <Link to="/products" className="main-link" style={{ margin: "2rem" }}>
           our products
         </Link>
