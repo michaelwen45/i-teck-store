@@ -6,7 +6,9 @@ const HomePage = () => {
   return (
     <div>
       <Hero title="awesome gadgets" max img={mainBcg}>
-        <Link to="/products">our products</Link>
+        <Link to="/products" className="main-link" style={{ margin: "2rem" }}>
+          our products
+        </Link>
       </Hero>
     </div>
   );
