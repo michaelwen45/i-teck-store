@@ -45,3 +45,9 @@ export const cartItemCost = () => {
     type: "CART_ITEM_COST",
   };
 };
+
+export const closeCart = () => {
+  return {
+    type: "CLOSE_CART",
+  };
+};

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { closeCart } from "../redux/actions";
 export class SideCart extends Component {
   renderSideCartItems = () => {
     const { cart } = this.props;
@@ -29,7 +29,11 @@ export class SideCart extends Component {
           Cart Subtotal : ${cartSubTotal}
         </h4>
         <div className="text-center my-5">
-          <Link to="/cart" className="main-link">
+          <Link
+            to="/cart"
+            onClick={() => this.props.closeCart()}
+            className="main-link"
+          >
             cart page
           </Link>
         </div>
@@ -70,4 +74,4 @@ const mapStateToProps = (state) => {
     cartSubTotal: state.products.cartSubTotal,
   };
 };
-export default connect(mapStateToProps)(SideCart);
+export default connect(mapStateToProps, { closeCart })(SideCart);

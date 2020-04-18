@@ -102,7 +102,8 @@ export default (state = INITIAL_STATE, action) => {
         return acc + cur;
       }, 0);
       return { ...state, cartSubTotal: totalPrice, itemCount };
-
+    case "CLOSE_CART":
+      return { ...state, cartToggle: false };
     default:
       return state;
   }
