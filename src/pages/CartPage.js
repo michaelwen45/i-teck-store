@@ -99,7 +99,10 @@ const CartPage = ({
               </div>
               <div
                 className="col-10 mx-auto col-lg-2 pb-2"
-                onClick={() => removeItem(id)}
+                onClick={() => {
+                  removeItem(id);
+                  cartItemCost();
+                }}
               >
                 <FaTrash className="text-danger cart-icon" />
               </div>
