@@ -34,7 +34,7 @@ class SideBar extends React.Component {
 
 const SideWrapper = styled.nav`
   position: fixed;
-  top: 61px;
+  top: 53px;
   left: 0;
   width: 100%;
   height: 100%;
