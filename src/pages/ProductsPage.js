@@ -15,10 +15,10 @@ const ProductsPage = ({ filteredProducts, addCartItem, cartItemCost }) => {
     return (
       <React.Fragment>
         <Hero img={productsBcg} />
-        <FilterProducts />
         <section className="py-5">
           <div className="container">
             <Title center title="our products" />
+            <FilterProducts />
             <div className="row my-5">
               {filteredProducts.length > 0 ? (
                 <React.Fragment>
@@ -62,7 +62,10 @@ const ProductsPage = ({ filteredProducts, addCartItem, cartItemCost }) => {
                   })}
                 </React.Fragment>
               ) : (
-                <h2 style={{ textTransform: "capitalize" }}>
+                <h2
+                  className="col text-title text-center"
+                  style={{ textTransform: "capitalize" }}
+                >
                   unfortunately No items matched your search parameters
                 </h2>
               )}

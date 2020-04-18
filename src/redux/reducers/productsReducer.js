@@ -1,5 +1,5 @@
 import { items } from "../productData";
-import { checkCartItems } from "../utils/productUtils";
+import { checkCartItems, decreaseCartItems } from "../utils/productUtils";
 
 const INITIAL_STATE = {
   sidebarToggle: false,
@@ -104,6 +104,13 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, cartSubTotal: totalPrice, itemCount };
     case "CLOSE_CART":
       return { ...state, cartToggle: false };
+    case "CLEAR_CART":
+      return { ...state, cart: [] };
+    case "REMOVE_ITEM":
+      const newItems = state.cart.filter((item) => item.id !== action.payload);
+      return { ...state, cart: newItems };
+    case "REMOVE_ITEM_IN_CART_BY_QUANTITY":
+      return { ...state, cart: decreaseCartItems(state.cart, action.payload) };
     default:
       return state;
   }

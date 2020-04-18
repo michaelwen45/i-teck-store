@@ -51,3 +51,22 @@ export const closeCart = () => {
     type: "CLOSE_CART",
   };
 };
+
+export const clearCart = () => {
+  return {
+    type: "CLEAR_CART",
+  };
+};
+
+export const removeItem = (itemId) => {
+  return {
+    type: "REMOVE_ITEM",
+    payload: itemId,
+  };
+};
+export const removeItemInCartByQuantity = (itemToBeRemoved) => {
+  return {
+    type: "REMOVE_ITEM_IN_CART_BY_QUANTITY",
+    payload: itemToBeRemoved,
+  };
+};
